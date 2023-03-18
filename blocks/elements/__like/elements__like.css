@@ -1,0 +1,11 @@
+.elements__like{
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/like-disabled.svg);
+  cursor: pointer;
+  transition:  0.2s ease-out;
+}
+
+.elements__like:hover{
+  background-image: url(../../../images/like-hover.svg);
+}
