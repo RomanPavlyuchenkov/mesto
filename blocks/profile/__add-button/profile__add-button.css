@@ -8,7 +8,11 @@
   box-sizing: border-box;
   padding: 14px 64px;
   cursor: pointer;
+  transition:  0.2s ease-out;
+}
 
+.profile__add-button:hover{
+opacity: 0.5;
 }
 
 @media (max-width:690px){

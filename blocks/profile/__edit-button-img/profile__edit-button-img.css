@@ -3,6 +3,7 @@
   height: 10px;
 }
 
+
 @media (max-width:690px){
   .profile__edit-button-img{
     width: 7.5px;
