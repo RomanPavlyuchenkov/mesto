@@ -8,6 +8,7 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   padding: 0 15px;
+  min-height: 100vh;
 }
 
 @media (max-width:690px){

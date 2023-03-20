@@ -1,9 +1,11 @@
 .elements__like{
   width: 22px;
   height: 19px;
-  background-image: url(../../../images/like-disabled.svg);
   cursor: pointer;
   transition:  0.2s ease-out;
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 .elements__like:hover{

@@ -5,6 +5,9 @@
   top: -40px;
   right: -40px;
   transition:  0.2s ease-out;
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 .popup__close:hover{
