@@ -1,7 +1,7 @@
 .profile__edit-button{
   background: transparent;
   border: 1px solid #FFFFFF;
-  width: 26px;
+  width: 24px;
   height: 24px;
   position: relative;
   top: 3px;
@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 .profile__edit-button:hover{
   opacity: 0.5;
@@ -18,7 +19,7 @@
 
 @media (max-width:690px){
   .profile__edit-button{
-    width: 20px;
+    width: 18px;
     height: 18px;
   }
 }

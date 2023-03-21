@@ -3,9 +3,14 @@ const popup = document.querySelector('.popup');
 const popupClose = popup.querySelector('.popup__close');
 const userName = document.querySelector('.profile__title');
 const userStatus = document.querySelector('.profile__subtitle');
-const userNameInput = popup.querySelector('.popup__input-name');
-const userNameStatus = popup.querySelector('.popup__input-status');
+const userNameInput = popup.querySelector('#popup__input-name');
+const userNameStatus = popup.querySelector('#popup__input-status');
 const save = popup.querySelector('.popup__form');
+
+
+function popupClosed(){
+  popup.classList.remove('popup_opened');
+};
 
 popupOpen.addEventListener('click', function(){
   popup.classList.add('popup_opened');
@@ -14,12 +19,12 @@ popupOpen.addEventListener('click', function(){
 });
 
 popupClose.addEventListener('click',function(){
-  popup.classList.remove('popup_opened');
+  popupClosed();
 });
 
 save.addEventListener('submit',function(event){
   event.preventDefault();
   userName.textContent = userNameInput.value;
   userStatus.textContent =userNameStatus.value;
-  popup.classList.remove('popup_opened');
+  popupClosed();
 });
