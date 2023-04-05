@@ -1,0 +1,25 @@
+.popup-image__btn{
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition:  0.2s ease-out;
+}
+
+.popup-image__btn:hover{
+  opacity: 0.6;
+}
+
+@media (max-width:600px){
+  .popup-image__btn{
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -36px;
+  }
+}
