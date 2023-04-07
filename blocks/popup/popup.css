@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  pointer-events: none;
   opacity: 0;
   transition: visibility 0.4s, opacity 0.4s linear;
 }
