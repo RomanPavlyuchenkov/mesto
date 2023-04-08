@@ -87,7 +87,7 @@ function createElement (elementData){
   const popupImagesClosed = popupWithImages.querySelector('.popup__close_type_image');
   function openPopupImages (){
     const popupImg = popupWithImages.querySelector('.popup__img');
-    const popupTitle = popupWithImages.querySelector('.popup__title_type_image');
+    const popupTitle = popupWithImages.querySelector('.popup__title-image');
     openPopup(popupWithImages);
     popupImg.src = elementData.link;
     popupImg.alt = elementData.name;
