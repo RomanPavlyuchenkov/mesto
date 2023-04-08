@@ -1,4 +1,4 @@
-.popup-image__btn{
+.popup_type_image-btn{
   position: absolute;
   top: -40px;
   right: -40px;
@@ -11,12 +11,12 @@
   transition:  0.2s ease-out;
 }
 
-.popup-image__btn:hover{
+.popup_type_image-btn:hover{
   opacity: 0.6;
 }
 
 @media (max-width:600px){
-  .popup-image__btn{
+  .popup_type_image-btn{
     width: 20px;
     height: 20px;
     right: 0;

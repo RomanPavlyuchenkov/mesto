@@ -1,17 +1,17 @@
 //popup-edit-name
 const popupEditNameOpen = document.querySelector('.profile__edit-button');
-const popupEditName = document.querySelector('.popup-edit-name');
-const popupEditNameClose = popupEditName.querySelector('.popup-edit-name__close');
+const popupEditName = document.querySelector('.popup_type_edit-name');
+const popupEditNameClose = popupEditName.querySelector('.popup_type_edit-name-close');
 const userName = document.querySelector('.profile__title');
 const userStatus = document.querySelector('.profile__subtitle');
 const userNameInput = popupEditName.querySelector('#popup-edit-name__input-name');
 const userNameStatus = popupEditName.querySelector('#popup-edit-name__input-status');
-const saveEditName = popupEditName.querySelector('.popup-edit-name__form');
+const saveEditName = popupEditName.querySelector('.popup_type_edit-name-form');
 //popup-add-card
 const popupAddCardOpen = document.querySelector('.profile__add-button');
-const popupAddCard = document.querySelector('.popup-add-card');
-const popupAddCardClose = popupAddCard.querySelector('.popup-add-card__close');
-const saveCard = popupAddCard.querySelector('.popup-add-card__form');
+const popupAddCard = document.querySelector('.popup_type_add-card');
+const popupAddCardClose = popupAddCard.querySelector('.popup_type_add-card-close');
+const saveCard = popupAddCard.querySelector('.popup_type_add-card-form');
 
 
 function closePopup(popupRemove){
@@ -83,11 +83,11 @@ function createElement (elementData){
   textElement.textContent = elementData.name;
 
   //открыть и закрыть картинку
-  const popupWithImages = document.querySelector('.popup-image');
-  const popupImagesClosed = popupWithImages.querySelector('.popup-image__btn');
+  const popupWithImages = document.querySelector('.popup_type_image');
+  const popupImagesClosed = popupWithImages.querySelector('.popup_type_image-btn');
   function openPopupImages (){
-    const popupImg = popupWithImages.querySelector('.popup-image__img');
-    const popupTitle = popupWithImages.querySelector('.popup-image__title');
+    const popupImg = popupWithImages.querySelector('.popup_type_image-img');
+    const popupTitle = popupWithImages.querySelector('.popup_type_image-title');
     openPopup(popupWithImages);
     popupImg.src = elementData.link;
     popupImg.alt = elementData.name;
