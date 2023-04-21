@@ -10,17 +10,40 @@ const saveEditName = popupEditName.querySelector('.popup__form_type_edit-name');
 //popup-add-card
 const popupAddCardOpen = document.querySelector('.profile__add-button');
 const popupAddCard = document.querySelector('.popup_type_add-card');
+const userCardNameInput = popupAddCard.querySelector('#popup-add-card__input-name');
+const userCardInputLink = popupAddCard.querySelector('#popup-add-card__input-link');
 const popupAddCardClose = popupAddCard.querySelector('.popup__close_type_add-card');
 const saveCard = popupAddCard.querySelector('.popup__form_type_add-card');
+const popupList =  Array.from(document.querySelectorAll('.popup'));
 
 
 function closePopup(popupRemove){
   popupRemove.classList.remove('popup_opened');
+  document.removeEventListener('keydown',closePopupEsc);
+  document.removeEventListener('keydown',closePopupOverlay)
 };
 
 function openPopup (popupAdd){
   popupAdd.classList.add('popup_opened');
+  document.addEventListener('keydown',closePopupEsc )
+  document.addEventListener('click',closePopupOverlay)
 };
+
+function  closePopupOverlay (evt){
+  if(evt.target.classList.contains('popup_opened')){
+    popupList.forEach(popup =>{
+      closePopup(popup)
+    })
+  }
+}
+
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    popupList.forEach(popup =>{
+      closePopup(popup)
+    })
+  }
+}
 
 popupEditNameOpen.addEventListener('click', function(){
   openPopup(popupEditName)
@@ -47,12 +70,11 @@ popupAddCardOpen.addEventListener('click', function (){
 
 saveCard.addEventListener('submit',function(event){
   event.preventDefault();
-  const userCardNameInput = popupAddCard.querySelector('#popup-add-card__input-name').value;
-  const userCardInputLink = popupAddCard.querySelector('#popup-add-card__input-link').value;
-
+  const userCardNameInputValue = userCardNameInput.value
+  const userCardInputLinkValue = userCardInputLink.value
   const cardData ={
-    name: userCardNameInput,
-    link: userCardInputLink
+    name: userCardNameInputValue,
+    link: userCardInputLinkValue
   };
   renderElement (createElement(cardData));
   closePopup(popupAddCard);
