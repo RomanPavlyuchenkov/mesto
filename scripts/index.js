@@ -14,34 +14,40 @@ const userCardNameInput = popupAddCard.querySelector('#popup-add-card-input-name
 const userCardInputLink = popupAddCard.querySelector('#popup-add-card-input-link');
 const popupAddCardClose = popupAddCard.querySelector('.popup__close_type_add-card');
 const saveCard = popupAddCard.querySelector('.popup__form_type_add-card');
-const popupList =  Array.from(document.querySelectorAll('.popup'));
-
+const popupList = document.querySelectorAll('.popup');
+const popupWithImages = document.querySelector('.popup_type_image');
+const popupImagesClosed = popupWithImages.querySelector('.popup__close_type_image');
+const popupImg = popupWithImages.querySelector('.popup__img');
+const popupTitle = popupWithImages.querySelector('.popup__title-image');
+popupImagesClosed.addEventListener('click',function(){closePopup(popupWithImages)});
 
 function closePopup(popupRemove){
   popupRemove.classList.remove('popup_opened');
   document.removeEventListener('keydown',closePopupEsc);
-  document.removeEventListener('keydown',closePopupOverlay)
+  popupList.forEach(function(popup){
+    popup.removeEventListener('click',closePopupOverlay)
+  })
 };
 
 function openPopup (popupAdd){
   popupAdd.classList.add('popup_opened');
   document.addEventListener('keydown',closePopupEsc )
-  document.addEventListener('click',closePopupOverlay)
+  popupList.forEach(function(popup){
+    popup.addEventListener('click',closePopupOverlay)
+  })
 };
 
 function  closePopupOverlay (evt){
+  const popup = document.querySelector('.popup_opened')
   if(evt.target.classList.contains('popup_opened')){
-    popupList.forEach(popup =>{
-      closePopup(popup)
-    })
+    closePopup(popup)
   }
 }
 
 function closePopupEsc(evt) {
-  if (evt.key === 'Escape') {
-    popupList.forEach(popup =>{
-      closePopup(popup)
-    })
+  const popup = document.querySelector('.popup_opened')
+  if (evt.key === 'Escape' && popup) {
+    closePopup(popup)
   }
 }
 
@@ -105,18 +111,14 @@ function createElement (elementData){
   textElement.textContent = elementData.name;
 
   //открыть и закрыть картинку
-  const popupWithImages = document.querySelector('.popup_type_image');
-  const popupImagesClosed = popupWithImages.querySelector('.popup__close_type_image');
   function openPopupImages (){
-    const popupImg = popupWithImages.querySelector('.popup__img');
-    const popupTitle = popupWithImages.querySelector('.popup__title-image');
     openPopup(popupWithImages);
     popupImg.src = elementData.link;
     popupImg.alt = elementData.name;
     popupTitle.textContent = elementData.name;
   }
   imgElement.addEventListener('click',openPopupImages);
-  popupImagesClosed.addEventListener('click',function(){closePopup(popupWithImages)});
+
   //удалить и поставить лайк
   function likeElement(){
     likeButton.classList.toggle('elements__like_active')

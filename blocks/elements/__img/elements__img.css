@@ -1,5 +1,6 @@
 .elements__img{
   width: 100%;
+  display: block;
   aspect-ratio: 1/1;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
