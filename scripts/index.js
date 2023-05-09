@@ -77,61 +77,13 @@ saveCard.addEventListener('submit',function(event){
     name: userCardNameInputValue,
     link: userCardInputLinkValue
   };
-  renderElement (createElement(cardData));
+  render(cardData)
   closePopup(popupAddCard);
 });
 
 popupAddCardClose.addEventListener('click',function(){
   closePopup(popupAddCard);
 });
-
-
-/* ----Добавляем карточки---- */
-const templeateElements = document.querySelector('#template-elements').content;
-const gridElements = document.querySelector('.elements');
-
-initialElements.reverse().forEach((element)=>{
-  renderElement (createElement(element));
-});
-
-//принимает массив и создает елемент
-function createElement (elementData){
-  const cardElement = templeateElements.querySelector('.elements__element').cloneNode(true);
-  const imgElement = cardElement.querySelector('.elements__img');
-  const textElement = cardElement.querySelector('.elements__title');
-  const likeButton = cardElement.querySelector('.elements__like');
-  const deleteButton = cardElement.querySelector('.elements__delete');
-  imgElement.src = elementData.link;
-  imgElement.alt = elementData.name;
-  textElement.textContent = elementData.name;
-
-  //открыть и закрыть картинку
-  function openPopupImages (){
-    openPopup(popupWithImages);
-    popupImg.src = elementData.link;
-    popupImg.alt = elementData.name;
-    popupTitle.textContent = elementData.name;
-  }
-  imgElement.addEventListener('click',openPopupImages);
-
-  //удалить и поставить лайк
-  function likeElement(){
-    likeButton.classList.toggle('elements__like_active')
-  };
-  likeButton.addEventListener('click',likeElement);
-  function deleteElement(){
-    cardElement.remove()
-  };
-  deleteButton.addEventListener('click',deleteElement)
-
-  return cardElement;
-};
-
-
-//добавляем эементы в dom
-function renderElement (cardElement){
-  gridElements.prepend(cardElement);
-};
 
 
 
