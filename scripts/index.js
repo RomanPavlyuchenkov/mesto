@@ -1,3 +1,5 @@
+import {initialElements, Card } from "./Card.js";
+import{enableValidation,FormValidator} from "./FormValidator.js";
 //popup-edit-name
 const popupEditNameOpen = document.querySelector('.profile__edit-button');
 const popupEditName = document.querySelector('.popup_type_edit-name');
@@ -14,10 +16,10 @@ const userCardNameInput = popupAddCard.querySelector('#popup-add-card-input-name
 const userCardInputLink = popupAddCard.querySelector('#popup-add-card-input-link');
 const popupAddCardClose = popupAddCard.querySelector('.popup__close_type_add-card');
 const saveCard = popupAddCard.querySelector('.popup__form_type_add-card');
-const popupWithImages = document.querySelector('.popup_type_image');
+export const popupWithImages = document.querySelector('.popup_type_image');
 const popupImagesClosed = popupWithImages.querySelector('.popup__close_type_image');
-const popupImg = popupWithImages.querySelector('.popup__img');
-const popupTitle = popupWithImages.querySelector('.popup__title-image');
+export const popupImg = popupWithImages.querySelector('.popup__img');
+export const popupTitle = popupWithImages.querySelector('.popup__title-image');
 popupImagesClosed.addEventListener('click',function(){closePopup(popupWithImages)});
 
 function closePopup(popupRemove){
@@ -26,7 +28,7 @@ function closePopup(popupRemove){
   popupRemove.removeEventListener('click',closePopupOverlay)
 };
 
-function openPopup (popupAdd){
+export function openPopup (popupAdd){
   popupAdd.classList.add('popup_opened');
   document.addEventListener('keydown',closePopupEsc )
   popupAdd.addEventListener('click',closePopupOverlay)
@@ -77,7 +79,7 @@ saveCard.addEventListener('submit',function(event){
     name: userCardNameInputValue,
     link: userCardInputLinkValue
   };
-  render(cardData)
+  renderElement(cardData)
   closePopup(popupAddCard);
 });
 
@@ -87,3 +89,20 @@ popupAddCardClose.addEventListener('click',function(){
 
 
 
+//добавить card
+initialElements.reverse().forEach((item)=>{
+  renderElement(item);
+})
+
+function  renderElement (element){
+  const card = new Card(element);
+  const cardElement = card.generateCard();
+  document.querySelector('.elements').prepend(cardElement);
+}
+
+//валидация
+const profileValidator = new FormValidator(enableValidation,popupEditName);
+profileValidator.enableValidation();
+
+const cardValidator = new FormValidator(enableValidation,popupAddCard);
+cardValidator.enableValidation();
