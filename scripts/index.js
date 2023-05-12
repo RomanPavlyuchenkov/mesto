@@ -1,5 +1,8 @@
-import {initialElements, Card } from "./Card.js";
-import{enableValidation,FormValidator} from "./FormValidator.js";
+import Card  from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import{enableValidation,initialElements} from "./elements-array.js";
+
+const cardContainer =  document.querySelector('.elements');
 //popup-edit-name
 const popupEditNameOpen = document.querySelector('.profile__edit-button');
 const popupEditName = document.querySelector('.popup_type_edit-name');
@@ -32,6 +35,8 @@ export function openPopup (popupAdd){
   popupAdd.classList.add('popup_opened');
   document.addEventListener('keydown',closePopupEsc )
   popupAdd.addEventListener('click',closePopupOverlay)
+  profileValidator._resetErrors()
+  cardValidator._resetErrors()
 };
 
 function  closePopupOverlay (evt){
@@ -97,7 +102,7 @@ initialElements.reverse().forEach((item)=>{
 function  renderElement (element){
   const card = new Card(element);
   const cardElement = card.generateCard();
-  document.querySelector('.elements').prepend(cardElement);
+  cardContainer.prepend(cardElement);
 }
 
 //валидация
