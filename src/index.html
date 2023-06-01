@@ -4,30 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
   </head>
   <body>
     <div class="page">
       <!-- header -->
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="лого">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого">
       </header>
       <!-- main -->
       <main class="main">
         <!-- profile -->
         <section class="profile">
           <div class="profile__info">
-            <img class="profile__avatar" src="./images/Avatar.png" alt="аватар">
+            <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="аватар">
             <div class="profile__name">
               <div class="profile__edit">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button class="profile__edit-button" type="button"><img class="profile__edit-button-img" src="./images/edit-btn.svg" alt="редактировать"></button>
+                <button class="profile__edit-button" type="button"><img class="profile__edit-button-img" src="<%=require('./images/edit-btn.svg')%>" alt="редактировать"></button>
               </div>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-button" type="button"><img class="profile__add-button-img" src="./images/add-btn.svg" alt="добавить"></button>
+          <button class="profile__add-button" type="button"><img class="profile__add-button-img" src="<%=require('./images/add-btn.svg')%>" alt="добавить"></button>
         </section>
         <!-- elements -->
         <section class="elements">
@@ -42,7 +41,7 @@
         <div class="popup__container-image">
           <img class="popup__img" src="#" alt="#">
           <h2 class="popup__title-image"></h2>
-          <button class="popup__close popup__close_type_image" type="button"><img class="popup__close-img" src="./images/Close-Icon.svg" alt="Закрыть"></button>
+          <button class="popup__close popup__close_type_image" type="button"><img class="popup__close-img" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть"></button>
         </div>
       </div>
       <!-- pop-up -->
@@ -50,13 +49,13 @@
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form popup__form_type_edit-name" name="popup-edit-name__form" novalidate>
-            <input class="popup__input" id="popup-edit-name-input-name" autocomplete="off" required minlength="2" maxlength="40"  name="popup-edit-name__input-name" type="text" placeholder="Имя" >
+            <input class="popup__input" id="popup-edit-name-input-name" autocomplete="off" required minlength="2" maxlength="40"  name="name" type="text" placeholder="Имя" >
             <span class="popup__input-error  popup-edit-name-input-name-error"></span>
-            <input class="popup__input" id="popup-edit-name-input-status" autocomplete="off" required minlength="2" maxlength="400" name="popup-edit-name__input-status" type="text" placeholder="О себе">
+            <input class="popup__input" id="popup-edit-name-input-status" autocomplete="off" required minlength="2" maxlength="400" name="status" type="text" placeholder="О себе">
             <span class="popup__input-error popup-edit-name-input-status-error "></span>
             <button class="popup__btn-save" type="submit">Сохранить</button>
           </form>
-          <button type="button" class="popup__close popup__close_type_edit-name"><img class="popup__close-img" src="./images/Close-Icon.svg" alt="Закрыть"></button>
+          <button type="button" class="popup__close popup__close_type_edit-name"><img class="popup__close-img" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть"></button>
         </div>
       </div>
       <!-- pop-up-add-card -->
@@ -64,19 +63,19 @@
         <div class="popup__container">
           <h2 class="popup__title popup__title_type_add-card">Новое место</h2>
           <form class="popup__form popup__form_type_add-card" name="popup-add-card__form" novalidate>
-            <input class="popup__input" id="popup-add-card-input-name" autocomplete="off"  name="popup-add-card__input-name" minlength="2" maxlength="30" required type="text" placeholder="Название" >
+            <input class="popup__input" id="popup-add-card-input-name" autocomplete="off"  name="name" minlength="2" maxlength="30" required type="text" placeholder="Название" >
             <span class="popup__input-error popup-add-card-input-name-error"></span>
-            <input class="popup__input" id="popup-add-card-input-link" autocomplete="off"  name="popup-add-card__input-link" required type="url" placeholder="Ссылка на картинку">
+            <input class="popup__input" id="popup-add-card-input-link" autocomplete="off"  name="link" required type="url" placeholder="Ссылка на картинку">
             <span class="popup__input-error popup-add-card-input-link-error"></span>
             <button class="popup__btn-save" type="submit">Создать</button>
           </form>
-          <button type="button" class="popup__close popup__close_type_add-card"><img class="popup__close-img" src="./images/Close-Icon.svg" alt="Закрыть"></button>
+          <button type="button" class="popup__close popup__close_type_add-card"><img class="popup__close-img" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть"></button>
         </div>
       </div>
       <!-- template-elements -->
       <template id="template-elements">
         <div class="elements__element">
-          <button  type="button" class="elements__delete"><img src="./images/delete.svg" alt="удалить"></button>
+          <button  type="button" class="elements__delete"><img src="<%=require('./images/delete.svg')%>" alt="удалить"></button>
           <img class="elements__img" src="#" alt="#" >
           <div class="elements__info">
             <h2 class="elements__title"></h2>
@@ -85,6 +84,6 @@
         </div>
       </template>
     </div>
-    <script type ="module" src="./scripts/index.js"></script>
      </body>
 </html>
+
