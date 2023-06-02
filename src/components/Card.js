@@ -3,7 +3,7 @@ export default class Card {
   constructor( data, handleCardClick ) {
     this._name = data.name;
     this._link = data.link;
-    this.handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -13,19 +13,21 @@ export default class Card {
   }
   generateCard(){
     this._element = this._getTemplate();
-    this._clickLike();
-    this._clickDeleteButton();
-    this._clickImg();
+    this._img = this._element.querySelector('.elements__img')
+    this._like = this._element.querySelector('.elements__like')
+    this._initClickLike();
+    this._initClikDeleteButton();
+    this._initClickImg();
     this._element.querySelector('.elements__title').textContent = this._name;
-    this._element.querySelector('.elements__img').src = this._link;
-    this._element.querySelector('.elements__img').alt = this._name;
+    this._img.src = this._link;
+    this._img.alt = this._name;
     return this._element;
   }
   _likeElement(){
-    this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
+    this._like.classList.toggle('elements__like_active');
   }
-  _clickLike(){
-    this._element.querySelector('.elements__like').addEventListener('click', () => {
+  _initClickLike(){
+    this._like.addEventListener('click', () => {
       this._likeElement();
     });
   }
@@ -33,15 +35,15 @@ export default class Card {
     this._element.remove();
     this._element = null
   }
-  _clickDeleteButton(){
+  _initClikDeleteButton(){
     this._element.querySelector('.elements__delete').addEventListener('click', () => {
       this._deleteElement();
     });
   }
 
-  _clickImg(){
-    this._element.querySelector('.elements__img').addEventListener('click', () => {
-       this.handleCardClick(this._name, this._link);
+  _initClickImg(){
+    this._img.addEventListener('click', () => {
+       this._handleCardClick(this._name, this._link);
     });
   }
 }

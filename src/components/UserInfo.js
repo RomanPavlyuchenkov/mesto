@@ -1,7 +1,7 @@
 export default class UserInfo{
   constructor(data){
-    this._userName =data.name;
-    this._userStatus = data.status;
+    this._userName =document.querySelector(data.name);
+    this._userStatus = document.querySelector(data.status);
   }
   getUserInfo(){
     return{

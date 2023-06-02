@@ -1,7 +1,6 @@
 
 export default class FormValidator{
   constructor(config,formElement){
-    this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelectorr = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -13,10 +12,6 @@ export default class FormValidator{
 
   enableValidation(){
     this._setEventListeners();
-    this._form.addEventListener('submit',  () => {
-      this._form.reset();
-      this._toggleButtonState(this._inputList, this._buttonElement);
-    });
   }
 
   _setEventListeners(){
@@ -24,7 +19,7 @@ export default class FormValidator{
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input',  ()=> {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._toggleButtonState();
       });
     });
   }
@@ -54,20 +49,21 @@ export default class FormValidator{
    });
   }
 
-  _toggleButtonState (inputList,buttonElement){
-    if (this._hasInvalidInput(inputList)) {
-     buttonElement.classList.add( this._inactiveButtonClass);
-     buttonElement.setAttribute('disabled','');
+  _toggleButtonState (){
+    if (this._hasInvalidInput(this._inputList)) {
+      this._buttonElement.classList.add( this._inactiveButtonClass);
+      this._buttonElement.setAttribute('disabled','');
    } else {
-     buttonElement.classList.remove( this._inactiveButtonClass);
-     buttonElement.removeAttribute('disabled')
+    this._buttonElement.classList.remove( this._inactiveButtonClass);
+    this._buttonElement.removeAttribute('disabled')
    }
   }
 
-  _resetErrors(){
+  resetValidationState(){
     this._inputList.forEach(inputElement => {
       this._hideInputError(inputElement)
     })
+    this._toggleButtonState(this._inputList, this._buttonElement);
   }
 
 }

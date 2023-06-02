@@ -5,11 +5,11 @@ import PopupWithImage  from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
 import FormValidator from "../components/FormValidator.js";
-import{enableValidation,initialElements,popupEditNameOpen,popupEditName,
-  userName,userStatus,userNameInput,userNameStatus, popupAddCardOpen,popupAddCard
+import{enableValidation,initialElements,popupEditNameOpen,popupEditName
+,userNameInput,userNameStatus, popupAddCardOpen,popupAddCard
   ,popupWithImages} from "../utils/constants.js";
 
-  export const openPopupWithImage = new PopupWithImage(popupWithImages);
+  const openPopupWithImage = new PopupWithImage(popupWithImages);
   openPopupWithImage.setEventListeners();
 
   function handleCardClick(name, link) {
@@ -26,15 +26,15 @@ import{enableValidation,initialElements,popupEditNameOpen,popupEditName,
   };
 
   popupAddCardOpen.addEventListener('click', () => {
-    popupWithFormAddCard.openPopup();
-    cardValidator._resetErrors()
+    popupWithFormAddCard.open();
+    cardValidator.resetValidationState()
   });
 
 
   // Попап с редактированием профиля
  const popupWithFormEditName = new PopupWithForm(popupEditName,submitEditName );
  popupWithFormEditName.setEventListeners();
-  const userInfo = new UserInfo({name:userName,status:userStatus})
+  const userInfo = new UserInfo({name:".profile__title",status:".profile__subtitle"})
 
 
  function submitEditName(data) {
@@ -42,8 +42,8 @@ import{enableValidation,initialElements,popupEditNameOpen,popupEditName,
   popupWithFormEditName.closePopup();
 };
 popupEditNameOpen.addEventListener('click', () => {
-  popupWithFormEditName.openPopup();
-  profileValidator._resetErrors();
+  popupWithFormEditName.open();
+  profileValidator.resetValidationState();
   const userInfoData = userInfo.getUserInfo();//объект с инфой о пользователе на странице.
   userNameInput.value = userInfoData.name;
   userNameStatus.value = userInfoData.status
