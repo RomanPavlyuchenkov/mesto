@@ -43,14 +43,14 @@ export default class FormValidator{
     errorElement.textContent = '';
   }
   //валидация кнопки
-  _hasInvalidInput(inputList){
-    return inputList.some((inputElement) => {
+  _hasInvalidInput(){
+    return this._inputList.some((inputElement) => {
      return !inputElement.validity.valid;
    });
   }
 
   _toggleButtonState (){
-    if (this._hasInvalidInput(this._inputList)) {
+    if (this._hasInvalidInput()) {
       this._buttonElement.classList.add( this._inactiveButtonClass);
       this._buttonElement.setAttribute('disabled','');
    } else {

@@ -7,9 +7,9 @@ import UserInfo from "../components/UserInfo";
 import FormValidator from "../components/FormValidator.js";
 import{enableValidation,initialElements,popupEditNameOpen,popupEditName
 ,userNameInput,userNameStatus, popupAddCardOpen,popupAddCard
-  ,popupWithImages} from "../utils/constants.js";
+} from "../utils/constants.js";
 
-  const openPopupWithImage = new PopupWithImage(popupWithImages);
+  const openPopupWithImage = new PopupWithImage('.popup_type_image');
   openPopupWithImage.setEventListeners();
 
   function handleCardClick(name, link) {
@@ -17,7 +17,7 @@ import{enableValidation,initialElements,popupEditNameOpen,popupEditName
   };
 
   // Попап с добавлением карточек
-  const popupWithFormAddCard = new PopupWithForm(popupAddCard, submitAddCard);
+  const popupWithFormAddCard = new PopupWithForm('.popup_type_add-card', submitAddCard);
   popupWithFormAddCard.setEventListeners();
 
   function submitAddCard(data) {
@@ -32,7 +32,7 @@ import{enableValidation,initialElements,popupEditNameOpen,popupEditName
 
 
   // Попап с редактированием профиля
- const popupWithFormEditName = new PopupWithForm(popupEditName,submitEditName );
+ const popupWithFormEditName = new PopupWithForm('.popup_type_edit-name',submitEditName );
  popupWithFormEditName.setEventListeners();
   const userInfo = new UserInfo({name:".profile__title",status:".profile__subtitle"})
 

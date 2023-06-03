@@ -7,7 +7,6 @@ export const userNameStatus = popupEditName.querySelector('#popup-edit-name-inpu
 //popup-add-card
 export const popupAddCardOpen = document.querySelector('.profile__add-button');
 export const popupAddCard = document.querySelector('.popup_type_add-card');
-export const popupWithImages = document.querySelector('.popup_type_image');
 
 export const enableValidation = ({
   formSelector: '.popup__form',
