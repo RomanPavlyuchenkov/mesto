@@ -148,7 +148,6 @@ const section = new Section('.elements',renderElement);
   section.addItem(cardElement);
 }
 
-
 //валидация
  const profileValidator = new FormValidator(enableValidation,popupEditName);
 profileValidator.enableValidation();
