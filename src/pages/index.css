@@ -47,6 +47,6 @@
 @import url(../blocks/popup/__title-image/popup__title-image.css);
 @import url(../blocks/popup/__title/_type/popup__title_type_add-card.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__btn-save/_type/pop-up__btn-save_type_delete-card.css);
+@import url(../blocks/popup/__btn-save/_type/popup__btn-save_type_delete-card.css);
 @import url(../blocks/popup/__title/_type/popup__title_type_update-avatar.css);
 @import url(../blocks/popup/__btn-save/_type/popup__btn-save_type_update-avatar.css);

@@ -27,9 +27,9 @@ Promise.all([
 ])
 .then(([cards, user]) => {
   myId = user; // наполняем объект свойствами
-  cards.reverse().forEach((card) => renderElement (card));
+  section.renderItems(cards)
   userInfo.setUserInfo(user);
-})
+}).catch((err) => console.log(`catch: ${err}`))
 
 //Удаляем карточки с сервера
 const popupWithDeleteCard = new PopupWithConfirmation('.popup_type_delete-card',apiCardDelete)
@@ -75,10 +75,15 @@ const popupWithUpdateAvatar = new PopupWithForm('.popup_type_update-avatar', sub
 popupWithUpdateAvatar.setEventListeners();
 
  function submitAvatar(data){
-  return api.updateAvatar(data).then((newAvatar)=>{
+  renderLoading(popupUpdateAvatar, true);
+  api.updateAvatar(data).then((newAvatar)=>{
     avatar.src = newAvatar.avatar
+    popupWithUpdateAvatar.closePopup()
   })
   .catch((err)=>console.log(`catch: ${err}`))
+  .finally(() => {
+    renderLoading(popupUpdateAvatar);
+  });
  }
 
  popupUpdateAvatarOpen.addEventListener('click', () => {
@@ -90,12 +95,16 @@ popupWithUpdateAvatar.setEventListeners();
   // Попап с добавлением карточек
   const popupWithFormAddCard = new PopupWithForm('.popup_type_add-card', submitAddCard);
   popupWithFormAddCard.setEventListeners();
-
   function submitAddCard(data) {
-    return api.postCard(data).then((post)=>{
+    renderLoading(popupAddCard, true);
+      api.postCard(data).then((post)=>{
       renderElement(post);
+      popupWithFormAddCard.closePopup()
    })
    .catch((err)=>console.log(`catch: ${err}`))
+   .finally(() => {
+    renderLoading(popupAddCard,false,'Создать');
+  });
   };
 
   popupAddCardOpen.addEventListener('click', () => {
@@ -111,10 +120,16 @@ popupWithUpdateAvatar.setEventListeners();
 
 
  function submitEditName(data) {
- return api.updateUserInfo(data).then((patch)=>{//отправляет запрос на сервер
+  renderLoading(popupEditName, true);
+ api.updateUserInfo(data).then((patch)=>{//отправляет запрос на сервер
     userInfo.setUserInfo(patch)
+    popupWithFormEditName.closePopup()
  })
  .catch((err)=>console.log(`catch: ${err}`))
+ .finally(() => {
+  renderLoading(popupEditName);
+
+});
 };
 popupEditNameOpen.addEventListener('click', () => {
   popupWithFormEditName.open();
@@ -126,7 +141,7 @@ popupEditNameOpen.addEventListener('click', () => {
 
 
 //добавить card
-const section = new Section('.elements');
+const section = new Section('.elements',renderElement);
  function  renderElement (element){
   const card = new Card(element,handleCardClick,myId,handleDeleteCard,handleLike);
   const cardElement = card.generateCard();
@@ -143,3 +158,13 @@ cardValidator.enableValidation();
 
 const avatarValidator = new FormValidator(enableValidation,popupUpdateAvatar);
 avatarValidator.enableValidation();
+
+// Функция меняет текст кнопки
+const renderLoading = (popup, isLoading = false,originalText='Сохранить') => {
+  const currentActiveButton = popup.querySelector('.popup__btn-save');
+  if (isLoading) {
+    currentActiveButton.textContent = "Сохранение...";
+  } else {
+    currentActiveButton.textContent = originalText;
+  }
+};

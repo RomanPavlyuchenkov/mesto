@@ -1,10 +1,10 @@
-.pop-up__btn-save_type_delete-card{
+.popup__btn-save_type_delete-card{
   width: 358px;
   margin-top: -7px;
 }
 
 @media (max-width:600px){
-  .pop-up__btn-save_type_delete-card{
+  .popup__btn-save_type_delete-card{
     width: 236px;
     margin-top: -40px;
   }
