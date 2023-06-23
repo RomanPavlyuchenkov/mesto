@@ -11,7 +11,7 @@ avatar
 } from "../utils/constants.js";
 import Api from "../components/Api";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
-
+import{renderLoading} from "../utils/utils.js";
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-68',
@@ -158,12 +158,3 @@ cardValidator.enableValidation();
 const avatarValidator = new FormValidator(enableValidation,popupUpdateAvatar);
 avatarValidator.enableValidation();
 
-// Функция меняет текст кнопки
-const renderLoading = (popup, isLoading = false,originalText='Сохранить') => {
-  const currentActiveButton = popup.querySelector('.popup__btn-save');
-  if (isLoading) {
-    currentActiveButton.textContent = "Сохранение...";
-  } else {
-    currentActiveButton.textContent = originalText;
-  }
-};
