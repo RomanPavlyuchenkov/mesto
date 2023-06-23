@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 .profile__edit-button:hover{
   opacity: 0.6;
